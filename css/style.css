@@ -112,3 +112,15 @@ h1, h2, p, a {
         float: right;
     }
 }
+.section2 {
+    padding-top: 100px;
+}
+.section2 ul{
+    text-decoration: none;
+    list-style-type: none;
+    padding-left: 0;
+}
+.section2 li {
+    font-weight: 500;
+    font-size: 15px;
+}
