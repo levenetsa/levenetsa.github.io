@@ -5,23 +5,19 @@ html, body {
 h1, h2, p, a {
     font-family: 'Helvetica Neue Thin', 'HelveticaNeue-Thin', 'helvetica neue', helvetica, arial, 'lucida grande', sans-serif;
 }
-/*.header {
-    background-color: #4386fc;
-    opacity: 0.8;
-    position: fixed;
-    width: 100%;
+
+a.navmenu-brand {
+
 }
-.header img{
-    display: inline-block;
+
+ul.nav.navmenu-nav{
+    margin-top: 200px;
+    text-align: center;
 }
-.header h1{
-    display: inline-block;
-    color: #000;
-    font-family: Century Gothic;
+ul.nav.navmenu-nav li {
     font-size: 20px;
-    font-weight: 400;
-    text-transform: uppercase;
-}*/
+}
+
 .btn {
     border-radius: 0;
     border: 0;
@@ -33,25 +29,7 @@ h1, h2, p, a {
     text-decoration: none;
 }
 
-/*.main h1 {
-    font-size: 64px;
-    font-weight: 100;
-    margin-bottom: 20px;
-    color: silver;
-}
-.main p {
-    font-size: 26px;
-    font-weight: 200;
-    margin-bottom: 40px;
-    color: silver;
-}
 
-.label{
-    position: absolute;
-    z-index: 5;
-    top: 30%;
-    left: 20%;
-}*/
 .vid_section{
     width: 100%;
     height: 100%;
