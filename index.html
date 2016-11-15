@@ -74,7 +74,7 @@
 </div>
 
 <div class="section2 About">
-    <h1 class="md-lg-center">About</h1>
+    <h1 align="center">About</h1>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -153,7 +153,7 @@
 </div>
 
 <div class="section2 Products">
-    <h1 class="md-lg-center">Products Надо подобрать нормальный шрифт заголовка</h1>
+    <h1 align="center">Products Надо подобрать нормальный шрифт заголовка</h1>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -231,71 +231,42 @@
                                style="display: block; bottom: -161.32px;"></div>
 </div>
 
-<div class="section2 Contacts">
-    <h1 class="md-lg-center">Contact us</h1>
-    <div class="container">
+<div class="section2 Contacts" align="center">
+    <h1 align="center">Contact us</h1>
+    <div class="col m6 l6 s12 " style="width: 50%;min-width: 320px;">
         <div class="row">
-            <div class="col-sm-4">
-                <div class=".md-lg-pull-left">
-                    <p><i class="material-icons" style="font-size: 120px">group_work</i></p>
-                    <h3>Open source</h3>
-                    <p>
-                        Mako is an open source project licensed under the <a href="https://makoframework.com/license">BSD
-                        License</a>. This means that you can use and modify it for both commercial and open source
-                        purposes.
-                    </p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="md-lg-center">
-                    <p><i class="material-icons" style="font-size: 120px">fast_forward</i></p>
-                    <h3>Fast & lightweight</h3>
-                    <p>Mako is fast and lightweight and will allow you to serve high traffic websites on modest
-                        hardware.</p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="md-lg-pull-right">
-                    <p><i class="material-icons" style="font-size: 120px">business</i></p>
-                    <h3>Database agnostic</h3>
-                    <p>Develop your application without having to worry about which RDBMS it is going to be deployed
-                        on.</p>
-                </div>
+            <div class="col m12" align="left">
+                <div class="footer-drop-title">Drop us a line</div>
             </div>
         </div>
-        <div class="row" style="height: 50px"></div>
-
-        <div class="row">
-            <div class="col-sm-4">
-                <div class=".md-lg-pull-left">
-                    <p><i class="material-icons" style="font-size: 120px">business</i></p>
-                    <h3>Database agnostic</h3>
-                    <p>Develop your application without having to worry about which RDBMS it is going to be deployed
-                        on.</p>
+        <form id="drop-a-line" role="form" >
+            <div class="row">
+                <div class="input-field col m12 s12"><input id="your-email" type="email"><label for="your-email">Your
+                    email address</label></div>
+            </div>
+            <div class="row">
+                <div class="input-field col m12 s12"><textarea id="your-message" rows="3"
+                                                               class="materialize-textarea"></textarea><label
+                        for="your-message">Your message</label></div>
+            </div>
+            <div class="row">
+                <div class="col col s12">
+                    <button id="send-message" class="footer-send">SEND</button>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="md-lg-center">
-                    <p><i class="material-icons" style="font-size: 120px">group_work</i></p>
-                    <h3>Open source</h3>
-                    <p>
-                        Mako is an open source project licensed under the <a href="https://makoframework.com/license">BSD
-                        License</a>. This means that you can use and modify it for both commercial and open source
-                        purposes.
-                    </p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="md-lg-pull-right">
-                    <p><i class="material-icons" style="font-size: 120px">fast_forward</i></p>
-                    <h3>Fast & lightweight</h3>
-                    <p>Mako is fast and lightweight and will allow you to serve high traffic websites on modest
-                        hardware.</p>
-                </div>
-            </div>
-        </div>
+        </form>
+        <div id="thanks-note" class="hide"><p><b>Thank you for everything!</b></p>
+            <p>We'll contact you as soon as we find this.<br><i>(usually in a few hours)</i></p>
+            <p><a href="https://app.closeheat.com/users/sign_in" class="btn sign-up waves-effect waves-light">Create a
+                Website in the Meantime</a></p></div>
+        <div id="error-note" class="hide"><p><b>There were errors sending your message.</b></p>
+            <p>Feel free to email us directly on
+                <a href="mailto:support@closeheat.com">support@closeheat.com</a>.<br>We'll get back to you a soon as we
+                find it.<br><i>(usually in a few hours)</i></p></div>
     </div>
 </div>
+
+
 
 <!-- FOOTER -->
 <div class="footer">
@@ -345,7 +316,14 @@
             list[i].style.display = 'none';
         }
     }
-    ;
+
+
+
+
+    //set size of Contucts
+    var actualWimdowHeight = document.getElementById("video").clientHeight - document.getElementsByClassName("footer")[0].clientHeight;
+    $("div.Contacts")[0].style.minHeight = "" + actualWimdowHeight + "px";
+
     //
     //Works on large veiwports, when mouse leaves the menu div the div will be hidden again.
     //To be exorted later on.
