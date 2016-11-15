@@ -32,7 +32,7 @@ ul.nav.navmenu-nav li {
 
 .vid_section{
     width: 100%;
-    height: 100%;
+    height: auto;
     /*position: absolute;*/
     padding:0;
     margin:0;
@@ -58,15 +58,14 @@ ul.nav.navmenu-nav li {
     border: 0;
 }
 .section2{
-    height: 400px;
+    height: auto;
     display: block;
     background-color: #fff;
 }
-.col-centered{
+.section2 .container {
 
-    margin-left: auto;
-    margin-right: auto;
 }
+
 .footer {
     border-top: 1px solid #dbdbdb;
     background-color: #f3f3f3;
@@ -89,9 +88,16 @@ ul.nav.navmenu-nav li {
     .md-lg-pull-right{
         float: right;
     }
+    .md-lg-pull-left{
+        float: left;
+    }
+    .md-lg-center{
+        display: table;
+        margin: 0 auto;
+    }
 }
 .section2 {
-    padding-top: 100px;
+    padding: 50px 0;
 }
 .section2 ul{
     text-decoration: none;
