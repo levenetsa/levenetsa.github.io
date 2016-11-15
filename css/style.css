@@ -2,6 +2,17 @@ html, body {
     margin: 0;
     padding: 0;
 }
+html {overflow: -moz-scrollbars-none;}
+body {
+    -ms-overflow-style: none;
+    /*overflow:hidden;*/
+    /*overflow: -moz-scrollbars-none;*/
+
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
 h1, h2, p, a {
     font-family: 'Helvetica Neue Thin', 'HelveticaNeue-Thin', 'helvetica neue', helvetica, arial, 'lucida grande', sans-serif;
 }
