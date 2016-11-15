@@ -32,10 +32,10 @@
     <a class="navmenu-brand" href="#" style="text-align: center; margin-bottom: 30px;"><h2>Black Pony</h2></a>
 
     <ul class="nav navmenu-nav">
-        <li><a id="menu_option1">Option 1</a></li>
-        <li><a href="#">Option 2</a></li>
-        <li><a href="#">Option 3</a></li>
-        <li><a href="#">Option 4</a></li>
+        <li><a id="menu_option1" class="getridofmenu">Option 1</a></li>
+        <li><a href="#" class="getridofmenu">Option 2</a></li>
+        <li><a href="#" class="getridofmenu">Option 3</a></li>
+        <li><a href="#" class="getridofmenu">Option 4</a></li>
     </ul>
 </div>
 
@@ -159,10 +159,13 @@
     $(".navmenu").on('mouseleave', function () {
         $(".navmenu").offcanvas('toggle');
     });
-    $("#menu_option1").click(function () {
+    $("/*#menu_option1*/.getridofmenu").click(function () {
         $('html, body').animate({
             scrollTop: $("div.section2").offset().top
         }, 2000);
+    });
+    $(".getridofmenu").click(function () {
+        $(".navmenu").offcanvas('toggle');
     });
 </script>
 </body>
