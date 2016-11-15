@@ -74,8 +74,8 @@ ul.nav.navmenu-nav li {
     display: block;
     background-color: #fff;
 }
-.section2 .container {
-
+.section2.about div.container {
+    padding: 0 0;
 }
 
 .footer {
