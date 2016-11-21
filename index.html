@@ -81,8 +81,6 @@
 
         .content {
             position: relative;
-            height: inherit;
-            vertical-align: middle;
             top: 50%;
             transform: translateY(-50%);
             text-align: center;
@@ -131,16 +129,37 @@
             opacity: 0.6;
         }
 
-        .vid_section{
-            width: 100%;
+        #myVideo{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            top:0;
+            left:0;
+            width: 33.3333%;
             height: 100%;
-            /*position: absolute;*/
-            padding:0;
-            margin:0;
-            z-index: -1000;
-            overflow:hidden;
+            background-size: 100% 100%;
+            background-color: black; /* in case the video doesn't fit the whole page*/
+            background-position: center center;
+            background-size: contain;
+            object-fit: cover; /*cover video background */
+            z-index:3;
         }
+
     </style>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                verticalCentered: true,
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE'],
+                afterRender: function(){
+                    //playing the video
+                    $('video').get(0).play();
+                }
+            });
+        });
+    </script>
+
 </head>
 <body>
 
@@ -148,15 +167,9 @@
 <div id="fullpage">
     <div class="section " id="section1">
         <div class="slide" id="slide1">
-            <div class="content">
-                <div class="vid_section" data-vide-bg="video/food_video">
-                    <script src="js/jquery.min.js"></script>
-                    <script>
-                        window.jQuery || document.write('<script src="../libs/jquery/dist/jquery.min.js"><\/script>')
-                    </script>
-                    <script src="js/jquery.vide.js"></script>
-                </div>
-            </div>
+            <video autoplay loop muted id="myVideo">
+                <source src="video/food_video.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="slide" id="slide2">
             <div class="content">
