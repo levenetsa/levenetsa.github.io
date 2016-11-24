@@ -2,71 +2,163 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Black Pony</title>
+    <link rel="stylesheet" type="text/css" href="css/javascript.fullPage.css" />
 
-    <link rel="stylesheet" type="text/css" href="css/javascript.fullPage.css"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.css" rel="stylesheet" media="screen">
 
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/navmenu.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jasny-bootstrap.js"></script>
+
+</head>
+
+<body>
+
+    <!-- LEFT MENU SLIDER  -->
+    <div class="navmenu navmenu-default navmenu-inverse navmenu-fixed-left offcanvas-lg">
+        <a class="navmenu-brand" href="#" style="text-align: center; margin-bottom: 30px;"><h2>Black Pony</h2></a>
+
+        <ul class="nav navmenu-nav" id="menu">
+            <li><a href="#firstPage" class="getridofmenu">About</a></li>
+            <li><a href="#secondPage" class="getridofmenu">Products</a></li>
+            <li><a href="#3rdPage" class="getridofmenu">Contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- LEFT TOP MENU BUTTON/TRIGGER  -->
+    <div class="navbar navbar-default navbar-fixed-top navbtn">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand hidden-lg hidden-md" href="#">Black Pony</a>
+    </div>
+
+    <div id="fullpage">
+        <div class="section " id="section1">
+            <div class="slide" id="slide1">
+                <video autoplay loop muted id="myVideo">
+                <source src="video/food_video.mp4" type="video/mp4">
+            </video>
+            </div>
+            <div class="slide" id="slide2">
+                <div class="content">
+                    <h1>Slides too!</h1>
+                </div>
+            </div>
+            <div class="slide" id="slide3">
+                <div class="content">
+                    <h1>More slides!</h1>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section2">
+            <div class="content">
+                <h1>Black Pony</h1>
+                <p>Draft web site version</p>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="content">
+
+                <!-- Contact section starts here-->
+                <div class="w3-container w3-content w3-padding-64" style="max-width:800px; color: #000;" id="contact">
+                    <h2 class="w3-wide w3-center">CONTACT</h2>
+                    <p class="w3-opacity w3-center"><i>Interested? Drop a note!</i></p>
+                    <div class="w3-row w3-padding-32">
+                        <div class="w3-col m6 w3-large w3-margin-bottom">
+                            <i class="fa fa-map-marker" style="width:30px"></i> Парк Победы, СпБ<br>
+                            <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+                            <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+                        </div>
+                        <div class="w3-col m6">
+                            <form action="" target="_blank">
+                                <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                    <div class="w3-half">
+                                        <input class="w3-input w3-border" type="text" placeholder="Name" required="" name="Name">
+                                    </div>
+                                    <div class="w3-half">
+                                        <input class="w3-input w3-border" type="text" placeholder="Email" required="" name="Email">
+                                    </div>
+                                </div>
+                                <input class="w3-input w3-border" type="text" placeholder="Message" required="" name="Message">
+                                <button class="w3-btn w3-section w3-right" type="submit">SEND</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact section ends here -->
+
+                <!-- Add Google Maps -->
+                <div id="googleMap" style="height:400px;filter:grayscale(90%);-webkit-filter:grayscale(90%);"></div>
+                <script src="https://maps.googleapis.com/maps/api/js"></script>
+                <script>
+                    var myCenter = new google.maps.LatLng(59.86, 30.32);
+
+                    function initialize() {
+                        var mapProp = {
+                            center: myCenter,
+                            zoom: 12,
+                            scrollwheel: false,
+                            draggable: false,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+
+                        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+                        var marker = new google.maps.Marker({
+                            position: myCenter,
+                        });
+
+                        marker.setMap(map);
+                    }
+
+                    google.maps.event.addDomListener(window, 'load', initialize);
+                </script>
+                <!-- End of Google Maps -->
+
+                <!-- Footer starts here -->
+                <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+                    <i class="fa fa-facebook-official w3-hover-text-indigo"></i>
+                    <i class="fa fa-instagram w3-hover-text-purple"></i>
+                    <i class="fa fa-snapchat w3-hover-text-yellow"></i>
+                    <i class="fa fa-pinterest-p w3-hover-text-red"></i>
+                    <i class="fa fa-twitter w3-hover-text-light-blue"></i>
+                    <i class="fa fa-linkedin w3-hover-text-indigo"></i>
+                    <p class="w3-medium">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                </footer>
+                <!-- Footer ends here -->
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/javascript.fullPage.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
-            jQuery('#fullpage').fullpage({
-                verticalCentered: true,
-                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE'],
-                afterRender: function(){
-                    //playing the video
-                    jQuery('video').get(0).play();
-                }
+            fullpage.initialize('#fullpage', {
+                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                menu: '#menu',
+                css3: true
             });
+        });
+
+        $(".navmenu").on('mouseleave', function() {
+            $(".navmenu").offcanvas('toggle');
+        });
+        $(".getridofmenu").click(function() {
+            $(".navmenu").offcanvas('toggle');
         });
     </script>
 
-</head>
-<body>
-
-
-<div id="fullpage">
-    <div class="section " id="section1">
-        <div class="slide" id="slide1">
-            <video autoplay loop muted id="myVideo">
-                <source src="video/food_video.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="slide" id="slide2">
-            <div class="content">
-                <h1>Slides too!</h1>
-            </div>
-        </div>
-        <div class="slide" id="slide3">
-            <div class="content">
-                <h1>More slides!</h1>
-            </div>
-        </div>
-    </div>
-    <div class="section" id="section2">
-        <div class="content">
-            <h1>Black Pony</h1>
-            <p>Draft web site version</p>
-        </div>
-    </div>
-    <div class="section" id="section3">
-        <div class="content">
-            <h1>Compatible</h1>
-            <p>IE 8+ support.</p>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript" src="js/javascript.fullPage.js"></script>
-<script type="text/javascript">
-    fullpage.initialize('#fullpage', {
-        anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
-        menu: '#menu',
-        css3: true
-    });
-
-</script>
-
 </body>
+
 </html>

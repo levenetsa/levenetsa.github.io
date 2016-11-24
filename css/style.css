@@ -1,5 +1,4 @@
-        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
-        form, fieldset, input, textarea, p, blockquote, th, td {
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
             padding: 0;
             margin: 0;
         }
@@ -33,7 +32,6 @@
 
         caption, th {
             text-align: left;
-
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -51,9 +49,9 @@
         abbr, acronym {
             border: 0;
         }
-
         /* Custom CSS
          * --------------------------------------- */
+
         body {
             font-family: arial, helvetica;
             color: #F2F2F2;
@@ -73,9 +71,9 @@
             transform: translateY(-50%);
             text-align: center;
         }
-
         /* Section 1
          * --------------------------------------- */
+
         #section1 {
             background-color: #BFDA00;
         }
@@ -88,9 +86,9 @@
             color: #333;
             opacity: 0.4;
         }
-
         /* Section 2
          * --------------------------------------- */
+
         #section2 {
             background-color: #2EBE21;
         }
@@ -102,11 +100,11 @@
         #section2 p {
             opacity: 0.8;
         }
-
         /* Section 3
          * --------------------------------------- */
+
         #section3 {
-            background-color: #2C3E50;
+            background-color: #f1f1f1!important;
         }
 
         #section3 h1 {
@@ -117,18 +115,53 @@
             opacity: 0.6;
         }
 
-        #myVideo{
+        #myVideo {
             position: absolute;
             right: 0;
             bottom: 0;
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
             width: 100vw;
             height: auto;
             background-size: 100% 100%;
-            background-color: black; /* in case the video doesn't fit the whole page*/
+            background-color: black;
+            /* in case the video doesn't fit the whole page*/
             background-position: center center;
             background-size: contain;
-            object-fit: cover; /*cover video background */
-            z-index:3;
+            object-fit: cover;
+            /*cover video background */
+            z-index: 3;
         }
+
+        @media (min-width: 768px) {
+            .md-lg-pull-right {
+                float: right;
+            }
+            .md-lg-pull-left {
+                float: left;
+            }
+            .md-lg-center {
+                display: table;
+                margin: 0 auto;
+            }
+        }
+
+        .navbtn {
+            background-color: black;
+            border: 0;
+        }
+
+        .navbar-toggle {
+            background-color: black;
+            border: 0;
+        }
+
+        ul.nav.navmenu-nav {
+            margin-top: 200px;
+            text-align: center;
+        }
+
+        ul.nav.navmenu-nav li {
+            font-size: 20px;
+        }
+        /*CONTACT SECTION STYLES*/
