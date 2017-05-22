@@ -77,31 +77,45 @@
       <div class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
         <div class="mdl-cell mdl-cell--middle">
-          <form id="search">
+          <form>
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="sample2">
-              <label class="mdl-textfield__label" for="sample2">Text...</label>
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Film...</label>
             </div>
           </form>
+          <button id="button_search">SEARCH</button>
           <script type="text/javascript">
-            function showJsonp(data, status) {
-              console.log(data);
-                 // alert("Data: " + data + "\nStatus: " + status);
+            function ajaxToKP(data, status) {
+          //    console.log('https://suggest-kinopoisk.yandex.net/suggest-kinopoisk?srv=kinopoisk&part=' + $('#search')[0].value + '&_=1495387690035');
+          //     $.ajax({
+          //      url: 'https://suggest-kinopoisk.yandex.net/suggest-kinopoisk?srv=kinopoisk&part=' + $('#search')[0].value + '&_=1495387690035',
+          //      success: 'showJsonpKP',
+          //      dataType: 'jsonp',
+          //     jsonpCallback: 'showJsonpKP'
+          //    });
             };
-            $('#sample2').on('input', function () {
+            function showJsonpKP(data, status) {
+              console.log(data[0]);
+              $('#text').val($('#text').val() + data[0] + '\n'); 
+            };
+            function showJsonp(data, status) {
+              $('#text').val($('#text').val() + data[0].id + " " + data[0].name + "\n"); 
+            };
+            $('#search').on('input', function () {
               $.ajax({
-                url: 'http://localhost:22456/s/' + $('#sample2')[0].value,
-                success: function (data, status) {
-                  //alert("Data: " + data + "\nStatus: " + status);
-                },
+                url: 'http://localhost:22456/s/' + $('#search')[0].value,
+                success: 'showJsonp',
                 dataType: 'jsonp',
                 jsonpCallback: 'showJsonp'
               });
             });
+            $('#button_search').on('click', ajaxToKP())
           </script>
         </div>
         <div class="mdl-layout-spacer"></div>
       </div>
+      <textarea id="text" style="min-width: 400px;min-height:400px;">
+      </textarea>
     </main>
   </div>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
