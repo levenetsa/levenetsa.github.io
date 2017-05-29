@@ -61,3 +61,8 @@
 .demo-footer .mdl-mini-footer--link-list a {
   font-size: 13px;
 }
+
+.mdl-grid.center-items {
+  justify-content: center;
+}
+

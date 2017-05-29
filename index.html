@@ -48,6 +48,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
+  <link rel="stylesheet" href="auto-complete.css">
   <link rel="stylesheet" href="styles.css">
   <style>
     #view-source {
@@ -61,6 +62,7 @@
     }
   </style>
   <script src="jquery-3.2.1.min.js"></script>
+  <script src="auto-complete.min.js"></script>
 </head>
 
 <body>
@@ -74,51 +76,50 @@
     </header>
     <!-- Expandable Textfield -->
     <main class="mdl-layout__content">
-      <div class="mdl-grid">
-        <div class="mdl-layout-spacer"></div>
-        <div class="mdl-cell mdl-cell--middle">
-          <form>
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Film...</label>
-            </div>
-          </form>
-          <button id="button_search">SEARCH</button>
-          <script type="text/javascript">
-            function ajaxToKP(data, status) {
-          //    console.log('https://suggest-kinopoisk.yandex.net/suggest-kinopoisk?srv=kinopoisk&part=' + $('#search')[0].value + '&_=1495387690035');
-          //     $.ajax({
-          //      url: 'https://suggest-kinopoisk.yandex.net/suggest-kinopoisk?srv=kinopoisk&part=' + $('#search')[0].value + '&_=1495387690035',
-          //      success: 'showJsonpKP',
-          //      dataType: 'jsonp',
-          //     jsonpCallback: 'showJsonpKP'
-          //    });
-            };
-            function showJsonpKP(data, status) {
-              console.log(data[0]);
-              $('#text').val($('#text').val() + data[0] + '\n'); 
-            };
-            function showJsonp(data, status) {
-              $('#text').val($('#text').val() + data[0].id + " " + data[0].name + "\n"); 
-            };
-            $('#search').on('input', function () {
-              $.ajax({
-                url: 'http://localhost:22456/s/' + $('#search')[0].value,
-                success: 'showJsonp',
-                dataType: 'jsonp',
-                jsonpCallback: 'showJsonp'
-              });
-            });
-            $('#button_search').on('click', ajaxToKP())
-          </script>
-        </div>
-        <div class="mdl-layout-spacer"></div>
+      <div class="mdl-grid center-items">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="search">
+            <label class="mdl-textfield__label" for="search">Film...</label>
+          </div>
       </div>
-      <textarea id="text" style="min-width: 400px;min-height:400px;">
-      </textarea>
+      <div class="mdl-grid center-items">
+        <h3 id="name"></h3>
+      </div>
+      <div class="mdl-grid center-items">
+          <div id="content"></div>
+      </div>
+      <div class="mdl-grid center-items">
+          <div class="mdl-grid">
+            <div class="mdl-layout-spacer"></div>
+            <div id="spinner" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner"></div>
+            <div class="mdl-layout-spacer"></div>
+          </div>
+      </div>
     </main>
   </div>
+  
+
+   <script type="text/javascript">
+             function setContent(data) {
+               $('#spinner')[0].classList.remove("is-active");
+               $('#content')[0].innerHTML = data.text;
+             }
+             var demo1 = new autoComplete({
+              selector: '#search',
+              minChars: 2,
+              source: function(term, response){
+                $.getJSON('http://localhost:22456/s/' + term, function(data){
+                  response(data); 
+                });
+              },
+              onSelect: function(data, context){
+                $('#name')[0].innerHTML = context;
+                $('#spinner')[0].classList.add("is-active");
+                $.getJSON('http://localhost:22456/i/' + context, setContent);
+              }
+            });
+  </script>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
-
+// select * from mysql.general_log;
 </html>
