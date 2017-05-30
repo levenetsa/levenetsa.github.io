@@ -100,22 +100,24 @@
   
 
    <script type="text/javascript">
-             function setContent(data) {
-               $('#spinner')[0].classList.remove("is-active");
-               $('#content')[0].innerHTML = data.text;
-             }
+             var ids;
              var demo1 = new autoComplete({
               selector: '#search',
               minChars: 2,
               source: function(term, response){
                 $.getJSON('http://localhost:22456/s/' + term, function(data){
-                  response(data); 
+                  ids = new Map(data);
+                  response(Array.from(ids.keys())); 
                 });
               },
               onSelect: function(data, context){
                 $('#name')[0].innerHTML = context;
                 $('#spinner')[0].classList.add("is-active");
-                $.getJSON('http://localhost:22456/i/' + context, setContent);
+                $.getJSON('http://localhost:22456/' + ids.get(context), function(data) {
+                  console.log("got info");
+                  $('#spinner')[0].classList.remove("is-active");
+                  $('#content')[0].innerHTML = data.text;
+                });
               }
             });
   </script>
