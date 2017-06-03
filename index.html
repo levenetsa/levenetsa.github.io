@@ -105,15 +105,16 @@
               selector: '#search',
               minChars: 2,
               source: function(term, response){
-                $.getJSON('http://localhost:22456/s/' + term, function(data){
+                $.getJSON('http://146.66.183.158:22456/s/' + term, function(data){
                   ids = new Map(data);
                   response(Array.from(ids.keys())); 
                 });
               },
               onSelect: function(data, context){
                 $('#name')[0].innerHTML = context;
+                $('#content')[0].innerHTML = "";
                 $('#spinner')[0].classList.add("is-active");
-                $.getJSON('http://localhost:22456/' + ids.get(context), function(data) {
+                $.getJSON('http://146.66.183.158:22456/' + ids.get(context), function(data) {
                   console.log("got info");
                   $('#spinner')[0].classList.remove("is-active");
                   $('#content')[0].innerHTML = data.text;
