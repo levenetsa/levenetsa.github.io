@@ -125,6 +125,7 @@
               minChars: 2,
               source: function(term, response){
                 $.getJSON('http://localhost:22456/s/' + term, function(data){
+
                   ids = new Map(data);
                   response(Array.from(ids.keys())); 
                 });
