@@ -86,7 +86,22 @@
         <h3 id="name"></h3>
       </div>
       <div class="mdl-grid center-items">
-          <div id="content"></div>
+          <div style="margin:10px;"> 
+            <h3>Uslovn        </h3>
+            <div id="uslovn"></div>
+          </div>
+          <div style="margin:10px;"> 
+            <h3>t-score         </h3>
+            <div id="tScore"></div>
+          </div>
+          <div style="margin:10px;"> 
+            <h3>dice</h3>
+            <div id="dice"></div>
+          </div>
+          <div style="margin:10px;"> 
+            <h3>MI</h3>
+            <div id="mi"></div>
+          </div>
       </div>
       <div class="mdl-grid center-items">
           <div class="mdl-grid">
@@ -101,23 +116,41 @@
 
    <script type="text/javascript">
              var ids;
+             $('h3')[1].style.visibility= 'hidden';
+                  $('h3')[2].style.visibility= 'hidden';
+                  $('h3')[3].style.visibility= 'hidden';
+                  $('h3')[4].style.visibility= 'hidden';
              var demo1 = new autoComplete({
               selector: '#search',
               minChars: 2,
               source: function(term, response){
-                $.getJSON('http://146.66.183.158:22456/s/' + term, function(data){
+                $.getJSON('http://localhost:22456/s/' + term, function(data){
                   ids = new Map(data);
                   response(Array.from(ids.keys())); 
                 });
               },
               onSelect: function(data, context){
                 $('#name')[0].innerHTML = context;
-                $('#content')[0].innerHTML = "";
+                $('#uslovn')[0].innerHTML = "";
+                  $('#tScore')[0].innerHTML = "";
+                  $('#dice')[0].innerHTML = "";
+                  $('#mi')[0].innerHTML = "";
+                  $('h3')[1].style.visibility= 'hidden';
+                  $('h3')[2].style.visibility= 'hidden';
+                  $('h3')[3].style.visibility= 'hidden';
+                  $('h3')[4].style.visibility= 'hidden';
                 $('#spinner')[0].classList.add("is-active");
-                $.getJSON('http://146.66.183.158:22456/' + ids.get(context), function(data) {
+                $.getJSON('http://localhost:22456/' + ids.get(context), function(data) {
                   console.log("got info");
+                  $('h3')[1].style.visibility= 'visible';
+                  $('h3')[2].style.visibility= 'visible';
+                  $('h3')[3].style.visibility= 'visible';
+                  $('h3')[4].style.visibility= 'visible';
                   $('#spinner')[0].classList.remove("is-active");
-                  $('#content')[0].innerHTML = data.text;
+                  $('#uslovn')[0].innerHTML = data.uslovn;
+                  $('#tScore')[0].innerHTML = data.tScore;
+                  $('#dice')[0].innerHTML = data.dice;
+                  $('#mi')[0].innerHTML = data.mi;
                 });
               }
             });
