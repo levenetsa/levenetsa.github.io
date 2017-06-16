@@ -77,30 +77,30 @@
     <!-- Expandable Textfield -->
     <main class="mdl-layout__content">
       <div class="mdl-grid center-items">
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="search">
-            <label class="mdl-textfield__label" for="search">Film...</label>
-          </div>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="search">
+          <label class="mdl-textfield__label" for="search">Film...</label>
+        </div>
       </div>
       <div class="mdl-grid center-items">
         <h3 id="name"></h3>
       </div>
       <div class="mdl-grid center-items">
           <div style="margin:10px;"> 
-            <h3>Uslovn        </h3>
-            <div id="uslovn"></div>
+            <h3>Overall       </h3>
+            <div id="all"></div>
           </div>
           <div style="margin:10px;"> 
-            <h3>t-score         </h3>
-            <div id="tScore"></div>
+            <h3>Good       </h3>
+            <div id="good"></div>
           </div>
           <div style="margin:10px;"> 
-            <h3>dice</h3>
-            <div id="dice"></div>
+            <h3>Neut         </h3>
+            <div id="neut"></div>
           </div>
           <div style="margin:10px;"> 
-            <h3>MI</h3>
-            <div id="mi"></div>
+            <h3>Bad</h3>
+            <div id="bad"></div>
           </div>
       </div>
       <div class="mdl-grid center-items">
@@ -110,21 +110,33 @@
             <div class="mdl-layout-spacer"></div>
           </div>
       </div>
+      <button onClick="site = 'localhost';">
+          localhost
+        </button>
+        <button onClick="
+        $.ajaxSetup({'error':function(XMLHttpRequest,textStatus, errorThrown) {   
+          alert(textStatus);
+          alert(errorThrown);
+          alert(XMLHttpRequest.responseText);
+        }});">
+          set trigger
+        </button>
     </main>
   </div>
   
 
    <script type="text/javascript">
              var ids;
+             var site = "146.66.183.158";
              $('h3')[1].style.visibility= 'hidden';
-                  $('h3')[2].style.visibility= 'hidden';
-                  $('h3')[3].style.visibility= 'hidden';
-                  $('h3')[4].style.visibility= 'hidden';
+             $('h3')[2].style.visibility= 'hidden';
+             $('h3')[3].style.visibility= 'hidden';
+             $('h3')[4].style.visibility= 'hidden';
              var demo1 = new autoComplete({
               selector: '#search',
               minChars: 2,
-              source: function(term, response){
-                $.getJSON('http://localhost:22456/s/' + term, function(data){
+              source: function(term, response){""
+                $.getJSON('http://' + site + ':22456/s/' + term, function(data){
 
                   ids = new Map(data);
                   response(Array.from(ids.keys())); 
@@ -132,26 +144,26 @@
               },
               onSelect: function(data, context){
                 $('#name')[0].innerHTML = context;
-                $('#uslovn')[0].innerHTML = "";
-                  $('#tScore')[0].innerHTML = "";
-                  $('#dice')[0].innerHTML = "";
-                  $('#mi')[0].innerHTML = "";
-                  $('h3')[1].style.visibility= 'hidden';
-                  $('h3')[2].style.visibility= 'hidden';
-                  $('h3')[3].style.visibility= 'hidden';
-                  $('h3')[4].style.visibility= 'hidden';
+                $('#good')[0].innerHTML = "";
+                $('#bad')[0].innerHTML = "";
+                $('#neut')[0].innerHTML = "";
+                $('#all')[0].innerHTML = "";
+                $('h3')[1].style.visibility= 'hidden';
+                $('h3')[2].style.visibility= 'hidden';
+                $('h3')[3].style.visibility= 'hidden';
+                $('h3')[4].style.visibility= 'hidden';
                 $('#spinner')[0].classList.add("is-active");
-                $.getJSON('http://localhost:22456/' + ids.get(context), function(data) {
+                $.getJSON('http://' + site + ':22456/' + ids.get(context), function(data) {
                   console.log("got info");
                   $('h3')[1].style.visibility= 'visible';
                   $('h3')[2].style.visibility= 'visible';
                   $('h3')[3].style.visibility= 'visible';
                   $('h3')[4].style.visibility= 'visible';
                   $('#spinner')[0].classList.remove("is-active");
-                  $('#uslovn')[0].innerHTML = data.uslovn;
-                  $('#tScore')[0].innerHTML = data.tScore;
-                  $('#dice')[0].innerHTML = data.dice;
-                  $('#mi')[0].innerHTML = data.mi;
+                  $('#good')[0].innerHTML = data.good;
+                  $('#neut')[0].innerHTML = data.neut;
+                  $('#bad')[0].innerHTML = data.bad;
+                  $('#all')[0].innerHTML = data.all;
                 });
               }
             });
